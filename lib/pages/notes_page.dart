@@ -1,3 +1,10 @@
+// Author: Duong Phu Dong
+// Personal Project: Minimal Notes Application
+// Language: Flutter
+// Major: Software Engineering
+// University: Royal Melbourne Institute of Technology (Vietnam, SGS Campus)
+
+
 import 'package:flutter/material.dart';
 import 'package:minimal_notes_app/models/note.dart';
 import 'package:minimal_notes_app/models/note_database.dart';
@@ -80,6 +87,9 @@ class _NotesPageState extends State<NotesPage> {
   }
 
   // Delete a Note
+  void deleteNote(int id) {
+    context.read<NoteDatabase>().deleteNote(id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,6 +113,22 @@ class _NotesPageState extends State<NotesPage> {
           // List title UI
           return ListTile(
             title: Text(note.text),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Edit Button
+                IconButton (
+                  onPressed: () => updateNote(note),
+                  icon: const Icon (Icons.edit),
+                ), // IconButton
+
+                // Delete Button
+                   IconButton (
+                  onPressed: () => deleteNote(note.id),
+                  icon: const Icon (Icons.delete),
+                ), // IconButton
+              ]
+            )
           );
         },
       ),

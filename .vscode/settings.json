@@ -1,3 +1,4 @@
 {
-    "liveServer.settings.multiRootWorkspaceName": "minimal_notes_app"
+    "liveServer.settings.multiRootWorkspaceName": "minimal_notes_app",
+    "cmake.configureOnOpen": false
 }
