@@ -11,11 +11,17 @@ Future<void> main() async {
   await NoteDatabase.initialize();
 
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => NoteDatabase(),
-      child: const MyApp(),
-      ),
-    );
+    MultiProvider(
+    providers: [
+      // Note Provider
+      ChangeNotifierProvider(create: (context) => NoteDatabase()),
+
+      // Theme Provider
+      ChangeNotifierProvider(create: (context) => ThemeProvider()),
+    ],
+    child: const MyApp()
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
